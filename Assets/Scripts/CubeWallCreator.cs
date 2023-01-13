@@ -32,7 +32,7 @@ public class CubeWallCreator : MonoBehaviour
 
                 var renderer = cube.GetComponent<Renderer>();
                 renderer.GetPropertyBlock(_materialPropertyBlock);
-                _materialPropertyBlock.SetColor("_Color", Random.ColorHSV(0f, 1f, 1f, 1f, 0.5f, 1f)); //TODO: Renk değişimi aynı rengin farklı tonlarında rastgele yapılacak
+                _materialPropertyBlock.SetColor("_Color", Random.ColorHSV(0.4f, 0.5f, 1f, 1f, 0.5f, 1f)); //TODO: Renk değişimi aynı rengin farklı tonlarında rastgele yapılacak
                 renderer.SetPropertyBlock(_materialPropertyBlock);
             }
         }
