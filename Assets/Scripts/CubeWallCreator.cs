@@ -28,7 +28,7 @@ public class CubeWallCreator : MonoBehaviour
                 var cube = Instantiate(_cubeObject, transform);
                 cube.transform.position = new Vector3(_startingTransform.position.x + (x * _cubeSize), _startingTransform.position.y + (y * _cubeSize), 0);
                 cube.transform.localScale = Vector3.one * _cubeSize;
-                cube.GetComponent<Rigidbody>().isKinematic = true;
+                cube.GetComponent<Rigidbody2D>().isKinematic = true;
 
                 var renderer = cube.GetComponent<Renderer>();
                 renderer.GetPropertyBlock(_materialPropertyBlock);
