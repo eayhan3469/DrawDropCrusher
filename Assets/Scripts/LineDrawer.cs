@@ -34,6 +34,7 @@ public class LineDrawer : MonoBehaviour
         {
             _points.Clear();
             _pointsV2.Clear();
+            _edgeCollider.enabled = false;
         }
 
         if (Input.GetMouseButton(0))
@@ -59,6 +60,7 @@ public class LineDrawer : MonoBehaviour
                     {
                         _points.Add(hit.point - Vector3.forward * 0.05f);
                         _pointsV2.Add(hit.point);
+                        _edgeCollider.enabled = true;
                     }
                 }
             }

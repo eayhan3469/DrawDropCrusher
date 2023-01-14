@@ -15,8 +15,8 @@ public class BallSpawner : MonoBehaviour
     {
         _ballPool = new ObjectPool<Ball>(() => { return Instantiate(_ball); },
         b => { b.gameObject.SetActive(true); },
-        b => { b.gameObject.SetActive(false); },
-        b => { Destroy(b.gameObject); },
+        b => { b.ResetValues(); },
+        b => { Destroy(b.gameObject, 0.5f); },
         false, 10, 20);
 
         StartCoroutine(Spawn());
@@ -38,6 +38,7 @@ public class BallSpawner : MonoBehaviour
     {
         if (_usePool)
         {
+            ball.ResetValues();
             _ballPool.Release(ball);
         }
         else
