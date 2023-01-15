@@ -14,6 +14,7 @@ public class Ball : MonoBehaviour
     private Action<Ball> _killAction;
     private State _currentState;
     private Vector2 _launchPoint;
+    private float _speedFactorToExplode = 1f;
 
     private enum State
     {
@@ -24,6 +25,10 @@ public class Ball : MonoBehaviour
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
         _currentState = State.OnAir;
     }
 
@@ -33,6 +38,11 @@ public class Ball : MonoBehaviour
         {
             _rigidbody.AddForce((_launchPoint - (Vector2)transform.position).normalized * _lineLaunchPower);
         }
+
+        _speedFactorToExplode = _rigidbody.velocity.magnitude / 5f;
+        _speedFactorToExplode = Math.Clamp(_speedFactorToExplode, 1f, 3f);
+        Debug.Log(_speedFactorToExplode);
+        _explodeArea.transform.localScale = Vector3.one * _speedFactorToExplode;
     }
 
     public void InitKillAction(Action<Ball> killAction)
