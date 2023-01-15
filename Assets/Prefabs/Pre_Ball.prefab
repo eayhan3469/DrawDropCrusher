@@ -185,3 +185,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explodeArea: {fileID: 3478202539757705283}
+  _lineLaunchPower: 100

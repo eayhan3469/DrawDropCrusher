@@ -79,4 +79,9 @@ public class LineDrawer : MonoBehaviour
 
         return Vector3.Distance(_points.Last(), point);
     }
+
+    public Vector2 GetLaunchPoint()
+    {
+        return _pointsV2.OrderByDescending(p => p.x).First();
+    }
 }

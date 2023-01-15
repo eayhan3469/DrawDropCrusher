@@ -29,7 +29,7 @@ public class BallSpawner : MonoBehaviour
             var ball = _usePool ? _ballPool.Get() : Instantiate(_ball);
             ball.transform.parent = transform;
             ball.transform.position = transform.position;
-            ball.Init(KillBall);
+            ball.InitKillAction(KillBall);
             yield return new WaitForSeconds(_spawnRate);
         }
     }
