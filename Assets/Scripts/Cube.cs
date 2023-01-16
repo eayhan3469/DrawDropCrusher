@@ -27,7 +27,7 @@ public class Cube : MonoBehaviour
         Ball.OnBallExplode -= BallExplodeEffect;
     }
 
-    private void BallExplodeEffect(Vector2 ballPos)
+    private void BallExplodeEffect(Ball ball)
     {
         if (!_isExplode)
         {
@@ -37,7 +37,7 @@ public class Cube : MonoBehaviour
                 DOTween.Kill(transform);
             }
 
-            var direction = ((Vector2)transform.position - ballPos).normalized;
+            var direction = ((Vector2)transform.position - (Vector2)ball.transform.position).normalized;
             transform.DOPunchPosition(direction, 0.2f, 10, 10f);
         }
     }

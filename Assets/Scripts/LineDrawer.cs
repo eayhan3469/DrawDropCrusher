@@ -30,6 +30,9 @@ public class LineDrawer : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.instance.CurrentGameState != GameManager.GameState.Started)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             _points.Clear();

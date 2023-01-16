@@ -9,9 +9,10 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     [SerializeField] private GameObject _explodeArea;
+    [SerializeField] private GameObject _explosionEffect;
     [SerializeField] private float _lineLaunchPower;
 
-    public static Action<Vector2> OnBallExplode;
+    public static Action<Ball> OnBallExplode;
 
     private Rigidbody2D _rigidbody;
     private Action<Ball> _killAction;
@@ -66,7 +67,7 @@ public class Ball : MonoBehaviour
             Debug.Log("Hit to Cube");
             _explodeArea.SetActive(true);
 
-            DOVirtual.DelayedCall(0.05f, () => OnBallExplode?.Invoke((Vector2)transform.position));
+            DOVirtual.DelayedCall(0.05f, () => OnBallExplode?.Invoke(this));
             StartCoroutine(DelayedKillAction(0.2f));
         }
 

@@ -24,5 +24,10 @@ public class CubeCollector : Singleton<CubeCollector>
     public void AddCube(Cube cube)
     {
         _cubeList.Add(cube);
+
+        if ((float)_cubeList.Count / GameManager.instance.TotalCubeCount > 0.95f)
+        {
+            GameManager.instance.OnGameCompleted?.Invoke();
+        }
     }
 }

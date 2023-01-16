@@ -38,6 +38,7 @@ public class CubeWallCreator : MonoBehaviour
             }
         }
 
+        GameManager.instance.SetTotalCubeCount(_height * _width);
         DOTween.SetTweensCapacity(_height * _width, 10);
     }
 }
