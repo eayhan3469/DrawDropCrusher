@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,5 +37,7 @@ public class CubeWallCreator : MonoBehaviour
                 renderer.SetPropertyBlock(_materialPropertyBlock);
             }
         }
+
+        DOTween.SetTweensCapacity(_height * _width, 10);
     }
 }

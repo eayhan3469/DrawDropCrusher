@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,6 +10,8 @@ public class Ball : MonoBehaviour
 {
     [SerializeField] private GameObject _explodeArea;
     [SerializeField] private float _lineLaunchPower;
+
+    public static Action<Vector2> OnBallExplode;
 
     private Rigidbody2D _rigidbody;
     private Action<Ball> _killAction;
@@ -41,7 +44,6 @@ public class Ball : MonoBehaviour
 
         _speedFactorToExplode = _rigidbody.velocity.magnitude / 5f;
         _speedFactorToExplode = Math.Clamp(_speedFactorToExplode, 1f, 3f);
-        Debug.Log(_speedFactorToExplode);
         _explodeArea.transform.localScale = Vector3.one * _speedFactorToExplode;
     }
 
@@ -61,7 +63,10 @@ public class Ball : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Cube"))
         {
+            Debug.Log("Hit to Cube");
             _explodeArea.SetActive(true);
+
+            DOVirtual.DelayedCall(0.05f, () => OnBallExplode?.Invoke((Vector2)transform.position));
             StartCoroutine(DelayedKillAction(0.2f));
         }
 
@@ -90,7 +95,8 @@ public class Ball : MonoBehaviour
         if (collision.CompareTag("Cube"))
         {
             var cube = collision.GetComponent<Cube>();
-            cube.EffectFromBall();
+            cube.Explode();
+            Debug.Log("Trigger To Cube");
         }
     }
 
