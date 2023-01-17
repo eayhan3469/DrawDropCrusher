@@ -805,9 +805,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startingTransform: {fileID: 188753930}
   _cubeObject: {fileID: 3599331568197996481, guid: a306c31967e2c914484f67603f1b1a44, type: 3}
-  _height: 40
-  _width: 14
-  _cubeSize: 0.2
+  _wallTextures:
+  - {fileID: 2800000, guid: e5ccc86d4be080f4ab04d9f3ecf611ef, type: 3}
+  - {fileID: 2800000, guid: 0616657277082294f9f70ca657ffc42d, type: 3}
+  - {fileID: 2800000, guid: 7bc6d626a67df19408d0a56b68773c3c, type: 3}
+  _height: 45
+  _width: 17
+  _cubeSize: 0.18
 --- !u!1 &589232127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,9 +1216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdd19ca8efd7ffd45bf7aefbedea87de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReferenceResolution: {x: 1080, y: 1920}
-  ZoomFactor: {x: 1, y: 1, z: 10}
-  OriginPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0

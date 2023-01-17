@@ -37,23 +37,9 @@ public class Cube : MonoBehaviour
                 DOTween.Kill(transform);
             }
 
+            Debug.Log(Vector2.Distance(ball.transform.position, transform.position) / 20f);
             var direction = ((Vector2)transform.position - (Vector2)ball.transform.position).normalized;
-            transform.DOPunchPosition(direction, 0.2f, 10, 10f);
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (DOTween.IsTweening(transform))
-            {
-                DOTween.Rewind(transform);
-                DOTween.Kill(transform);
-            }
-
-            var direction = ((Vector2)transform.position - Vector2.zero).normalized;
-            transform.DOPunchPosition(direction, 0.2f, 10, 10f);
+            transform.DOPunchPosition(direction, 0.2f, 10, 10f).SetDelay(Vector2.Distance(ball.transform.position, transform.position) / 20f);
         }
     }
 
